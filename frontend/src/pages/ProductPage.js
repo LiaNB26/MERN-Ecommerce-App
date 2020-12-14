@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
+import axios from "axios";
+
 import Rating from "../components/Rating";
-import products from "../data/products";
 
 const ProductPage = (props) => {
-  const product = products.find((p) => p._id === props.match.params.id);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(
+        `/api/products/${props.match.params.id}`
+      );
+      setProduct(data);
+      console.log(data);
+    };
+
+    fetchProduct();
+  }, [props.match.params.id]);
 
   return (
     <>
@@ -13,10 +26,10 @@ const ProductPage = (props) => {
         Go Back
       </Link>
       <Row>
-        <Col md={6}>
+        <Col md={10} lg={6}>
           <Image src={product.image} alt={product.image} fluid />
         </Col>
-        <Col md={3}>
+        <Col md={5} lg={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h3>{product.name}</h3>
@@ -31,7 +44,7 @@ const ProductPage = (props) => {
             <ListGroup.Item>Description: {product.description}</ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={3}>
+        <Col md={5} lg={3}>
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>

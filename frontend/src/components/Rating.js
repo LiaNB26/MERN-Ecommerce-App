@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 const Rating = (props) => {
   const { rating, text, color } = props;
@@ -78,10 +78,10 @@ Rating.defaultProps = {
   color: "#f8e825",
 };
 
-Rating.propTypes = {
-  rating: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
-};
+// Rating.propTypes = {
+//   rating: PropTypes.number.isRequired,
+//   text: PropTypes.string.isRequired,
+//   color: PropTypes.string,
+// };
 
 export default Rating;
