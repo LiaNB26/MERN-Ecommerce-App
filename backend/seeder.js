@@ -15,7 +15,10 @@ connectDB();
 
 const importData = async () => {
   try {
-    destroyData();
+    // deleting existing data
+    await Order.deleteMany();
+    await Product.deleteMany();
+    await User.deleteMany();
 
     // inserting users dummy data
     const createdUsers = await User.insertMany(users);
@@ -54,3 +57,9 @@ const destroyData = async () => {
     process.exit(1);
   }
 };
+
+if (process.argv[2] === "-d") {
+  destroyData();
+} else {
+  importData();
+}
