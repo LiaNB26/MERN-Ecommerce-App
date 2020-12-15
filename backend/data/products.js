@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Airpods Wireless Bluetooth Headphones",
     image: "https://dam.which.co.uk/f939fc01-1d6f-4450-8c2c-6cddb664676a.jpg",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "2",
     name: "iPhone 11 Pro 256GB Memory",
     image:
       "https://www.costco.co.uk/medias/sys_master/images/h1f/h4f/15600594288670.jpg",
@@ -27,7 +25,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: "3",
     name: "Canon EOS 80D DSLR Camera",
     image:
       "https://i.expansys.net/img/b/315399/canon-eos-80d-dslr-camera-with-18-55mm-lens.jpg",
@@ -41,7 +38,6 @@ const products = [
     numReviews: 15,
   },
   {
-    _id: "4",
     name: "Sony Playstation 4 Pro White Version",
     image:
       "https://media.gamestop.com/i/gamestop/10154139/PlayStation-4-Pro-Glacier-White-1TB",
@@ -55,7 +51,6 @@ const products = [
     numReviews: 9,
   },
   {
-    _id: "5",
     name: "Logitech G-Series Gaming Mouse",
     image:
       "https://static.bhphoto.com/images/images2500x2500/1594386347_1574403.jpg",
@@ -69,7 +64,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: "6",
     name: "Amazon Echo Dot 3rd Generation",
     image: "https://cdn.mos.cms.futurecdn.net/cfEEcVzhmDwoULoiHbLZsN.jpg",
     description:
@@ -83,4 +77,4 @@ const products = [
   },
 ];
 
-module.exports = products;
+export default products;

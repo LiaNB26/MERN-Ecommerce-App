@@ -1,13 +1,14 @@
-const products = require("../data/products");
+// const products = require("../data/products");
+import products from "../data/products.js";
 
-const getProducts = (req, res, next) => {
+export const getProducts = (req, res, next) => {
   res.json(products);
 };
 
-const getProductById = (req, res, next) => {
+export const getProductById = (req, res, next) => {
   const product = products.find((p) => p._id === req.params.id);
   res.json(product);
 };
 
-exports.getProducts = getProducts;
-exports.getProductById = getProductById;
+// exports.getProducts = getProducts;
+// exports.getProductById = getProductById;
