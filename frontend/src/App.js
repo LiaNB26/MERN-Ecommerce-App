@@ -14,9 +14,10 @@ import { logout } from "./redux/actions/userActions";
 import IdleTimer from "react-idle-timer";
 import { IdleTimeOutModal } from "./components/IdleTimeOutModal";
 import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
-  const [timeout] = useState(1000 * 2);
+  const [timeout] = useState(1000 * 60 * 60);
   const [isTimedOut, setIsTimedOut] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -87,6 +88,7 @@ const App = () => {
             <Route path="/cart/:id?" component={CartPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/profile" component={ProfilePage} />
           </Container>
         </main>
         <Footer />
