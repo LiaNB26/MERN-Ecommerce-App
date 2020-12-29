@@ -49,13 +49,13 @@ const CartPage = ({ match, location, history }) => {
         ) : (
           <ListGroup variant="flush">
             {cartItems.map((item) => (
-              <ListGroup.Item key={item.productId}>
+              <ListGroup.Item key={item.product}>
                 <Row>
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
-                    <Link to={`/product/${item.productId}`}>{item.name}</Link>
+                    <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>
@@ -64,7 +64,7 @@ const CartPage = ({ match, location, history }) => {
                       value={item.qty}
                       onChange={(e) => {
                         dispatch(
-                          addToCart(item.productId, Number(e.target.value))
+                          addToCart(item.product, Number(e.target.value))
                         );
                       }}
                     >
@@ -80,7 +80,7 @@ const CartPage = ({ match, location, history }) => {
                       type="button"
                       variant="light"
                       onClick={() => {
-                        removeFromCartHandler(item.productId);
+                        removeFromCartHandler(item.product);
                       }}
                     >
                       <i className="fas fa-trash"></i>
