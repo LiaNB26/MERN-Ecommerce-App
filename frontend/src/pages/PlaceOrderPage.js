@@ -6,21 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/Message";
 import { createOrder } from "../redux/actions/orderActions";
+import { addDecimals } from "../utils/functions";
 
 const PlaceOrderPage = ({ history }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   // Calculate prices
-  const addDecimals = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2);
-  };
-
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
 
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 0);
 
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
 
@@ -35,7 +32,7 @@ const PlaceOrderPage = ({ history }) => {
 
   useEffect(() => {
     if (success) {
-      history.pushState(`/order/${order._id}`);
+      history.push(`/order/${order._id}`);
     }
     // eslint-disable-next-line
   }, [history, success]);

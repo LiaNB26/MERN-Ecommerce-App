@@ -18,6 +18,7 @@ import IdleTimer from "react-idle-timer";
 import { IdleTimeOutModal } from "./components/IdleTimeOutModal";
 import PaymentPage from "./pages/PaymentPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
+import OrderPage from "./pages/OrderPage";
 
 const App = () => {
   const [timeout] = useState(1000 * 60 * 60);
@@ -95,6 +96,7 @@ const App = () => {
             <Route path="/shipping" component={ShippingPage} />
             <Route path="/payment" component={PaymentPage} />
             <Route path="/placeorder" component={PlaceOrderPage} />
+            <Route path="/order/:id" component={OrderPage} />
           </Container>
         </main>
         <Footer />
