@@ -12,8 +12,8 @@ const router = express.Router();
 router.use(protect);
 
 router.post("/", addOrderItems);
+router.get("/myorders", getMyOrders);
 router.get("/:id", getOrderById);
 router.put("/:id/pay", updateOrderToPaid);
-router.get("/myorders", getMyOrders);
 
 export default router;

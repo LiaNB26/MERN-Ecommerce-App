@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CART_CLEAR_ITEMS } from "../types/cartTypes";
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -32,6 +33,9 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
     const { data } = await axios.post(`/api/orders`, order, config);
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
+
+    dispatch({ type: CART_CLEAR_ITEMS });
+    sessionStorage.removeItem("cartItems");
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,

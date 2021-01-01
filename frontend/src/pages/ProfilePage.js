@@ -61,14 +61,15 @@ const ProfilePage = ({ history }) => {
 
   return (
     <Row>
-      <Col md={3}>
+      <Col lg={3}>
         <h2>User Profile</h2>
+        <hr style={{ marginTop: 0, marginBottom: "0.2rem" }} />
+
         {message && <Message varaint="danger">{message}</Message>}
         {error && <Message varaint="danger">{error}</Message>}
         {success && <Message varaint="success">Profile Updated!</Message>}
         {loading && <Loader />}
 
-        <hr />
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -121,11 +122,12 @@ const ProfilePage = ({ history }) => {
         </Form>
       </Col>
 
-      <Col md={1}></Col>
+      <Col lg={1}>
+        <br />
+      </Col>
 
-      <Col md={8}>
+      <Col lg={8}>
         <h2>My Orders</h2>
-        <hr />
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
@@ -161,7 +163,9 @@ const ProfilePage = ({ history }) => {
                     ) : (
                       <i
                         className="fas fa-times"
-                        style={{ color: "red", textAlign: "center" }}
+                        style={{
+                          color: "red",
+                        }}
                       ></i>
                     )}
                   </td>
