@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -11,7 +11,6 @@ import {
   Form,
 } from "react-bootstrap";
 
-import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
@@ -24,11 +23,18 @@ const CartPage = ({ match, location, history }) => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   useEffect(() => {
+    if (!userInfo) {
+      history.push("/login");
+    }
+
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch, productId, qty, history, userInfo]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
@@ -37,6 +43,10 @@ const CartPage = ({ match, location, history }) => {
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
   };
+
+  if (!userInfo) {
+    history.push("/login");
+  }
 
   return (
     <Row>
