@@ -63,7 +63,7 @@ const UserListPage = ({ history }) => {
         <Table striped bordered hover responsive className="table-sm">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>USER ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
               <th>ADMIN</th>

@@ -11,11 +11,7 @@ import {
   getProductDetails,
   updateProduct,
 } from "../redux/actions/productActions";
-import {
-  PRODUCT_IMAGE_UPLOAD_FAIL,
-  PRODUCT_IMAGE_UPLOAD_RESET,
-  PRODUCT_UPDATE_RESET,
-} from "../redux/types/productTypes";
+import { PRODUCT_UPDATE_RESET } from "../redux/types/productTypes";
 
 const ProductEditPage = ({ match, history }) => {
   const productId = match.params.id;
