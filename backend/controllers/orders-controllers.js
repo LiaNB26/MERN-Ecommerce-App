@@ -19,7 +19,6 @@ export const addOrderItems = asyncHandler(async (req, res, next) => {
     res.status(400);
     throw new Error("No order items");
   } else {
-    console.log(req.user);
     const order = new Order({
       orderItems,
       user: req.user._id,
@@ -41,7 +40,6 @@ export const addOrderItems = asyncHandler(async (req, res, next) => {
 // @route   GET /api/orders/:id
 // @access  Private
 export const getOrderById = asyncHandler(async (req, res, next) => {
-  console.log(req.params.id);
   const order = await Order.findById(req.params.id).populate(
     "user",
     "name email"
