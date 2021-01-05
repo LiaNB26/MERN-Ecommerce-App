@@ -7,7 +7,7 @@ const products = [
       "An amazing way to start your morning with a delicious cup of coffee.",
     brand: "De'Longhi",
     category: "Kitchen",
-    price: 209.9,
+    price: 209.99,
     countInStock: 7,
     rating: 0,
     numReviews: 0,
@@ -64,7 +64,7 @@ const products = [
     numReviews: 0,
   },
   {
-    name: "Premium Travel Pillow",
+    name: "SANDINI Travelfix Premium Travel Pillow",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/6132PtVjCkL._AC_SL1200_.jpg",
     description:
@@ -135,7 +135,7 @@ const products = [
       "Electronic sensor for even toasting results and High lift for easy removal of small slices.",
     brand: "Bosch",
     category: "Kitchen",
-    price: 79.9,
+    price: 79.99,
     countInStock: 5,
     rating: 0,
     numReviews: 0,
@@ -148,7 +148,7 @@ const products = [
       "This Professional stylist designed and recommended hair dryer has a powerful AC motor generating 1875 watts of power.",
     brand: "Kenneth Bernard",
     category: "Hair Care",
-    price: 74.95,
+    price: 74.99,
     countInStock: 11,
     rating: 0,
     numReviews: 0,
@@ -176,6 +176,58 @@ const products = [
     category: "Electronics",
     price: 62.99,
     countInStock: 8,
+    rating: 0,
+    numReviews: 0,
+  },
+  {
+    name: "Fitbit Charge 4 Fitness and Activity Tracker",
+    image:
+      "https://www.joyces.ie/wp-content/uploads/2020/04/black-rosewood.jpg",
+    description:
+      "Use built-in GPS to see your pace and distance on screen during outdoor runs, rides, hikes and more and see a workout intensity map in the app that shows your heart rate changes along your route.",
+    brand: "Fitbit",
+    category: "Sports and Fitness",
+    price: 118.99,
+    countInStock: 4,
+    rating: 0,
+    numReviews: 0,
+  },
+  {
+    name: "Hoover Pro Pet Swivel HEPA Media Vacuum Cleaner",
+    image:
+      "https://media.hoover.com/i/ttifloorcare/UH74220PC_ATF_1_hero?$large$",
+    description:
+      "PERFECT FOR PETS: Multi-purpose pet tools tackle stubborn pet hair and dirt on furniture, stairs and hard to reach areas.",
+    brand: "Hoover",
+    category: "Home Appliances",
+    price: 199.99,
+    countInStock: 15,
+    rating: 0,
+    numReviews: 0,
+  },
+  {
+    name: "Space Heater, 1500W PTC with ECO Thermostat",
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/71GdbSgDk1L._AC_SX466_.jpg",
+    description:
+      "The PTC heating systems allows quickly heat! After the temperature is reached, it will be converted to energy-saving mode.",
+    brand: "ALROCKET",
+    category: "Home Appliances",
+    price: 63.99,
+    countInStock: 10,
+    rating: 0,
+    numReviews: 0,
+  },
+  {
+    name: "BalanceFrom GoYoga All-Purpose Yoga Mat",
+    image:
+      "https://youronlineyogastore.com/wp-content/uploads/2016/09/61hGPKRAiqL._SL1500_.jpg",
+    description:
+      "High density foam material, the 1/2'' thick premium mat comfortably cushions spine, hips, knees and elbows on hard floors.",
+    brand: "BalanceFrom",
+    category: "Sports and Fitness",
+    price: 22.99,
+    countInStock: 9,
     rating: 0,
     numReviews: 0,
   },

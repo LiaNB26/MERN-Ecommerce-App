@@ -9,7 +9,7 @@ const Product = (props) => {
   // console.log(product.image);
 
   return (
-    <Card className="pt-3 my-3 rounded">
+    <Card className="pt-3 my-3 rounded" style={{ minHeight: "450px" }}>
       <Link to={`/product/${product._id}`}>
         <Card.Img
           className="p-3"

@@ -128,7 +128,6 @@ const ProductListPage = ({ history, match }) => {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
-                <th>PRODUCT ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
@@ -139,7 +138,6 @@ const ProductListPage = ({ history, match }) => {
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
-                  <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>${product.price}</td>
                   <td>{product.category}</td>
