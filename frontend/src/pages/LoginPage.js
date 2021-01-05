@@ -12,6 +12,7 @@ import { login } from "../redux/actions/userActions";
 const LoginPage = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -28,9 +29,12 @@ const LoginPage = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    //login action
-    dispatch(login(email, password));
+    if (email === "" || password === "") {
+      setMessage("Please fill all fields.");
+    } else {
+      setMessage(null);
+      dispatch(login(email, password));
+    }
   };
 
   return (
@@ -38,7 +42,8 @@ const LoginPage = ({ location, history }) => {
       <HelmetTitle title="Sign In" />
       <FormContainer>
         <h1>Sign In</h1>
-        {error && <Message varaint="danger">{error}</Message>}
+        {message && <Message variant="danger">{message}</Message>}
+        {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
 
         <hr />
@@ -46,6 +51,7 @@ const LoginPage = ({ location, history }) => {
           <Form.Group controlId="email">
             <Form.Label>Email Address</Form.Label>
             <Form.Control
+              required
               type="email"
               placeholder="Enter email"
               value={email}
@@ -57,6 +63,7 @@ const LoginPage = ({ location, history }) => {
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              required
               type="password"
               placeholder="Enter password"
               value={password}

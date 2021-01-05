@@ -32,11 +32,20 @@ const RegisterPage = ({ location, history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setMessage("Passwords do not match!");
+    if (
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      confirmPassword === ""
+    ) {
+      setMessage("Please fill all fields.");
     } else {
-      dispatch(register(name, email, password));
-      setMessage(null);
+      if (password !== confirmPassword) {
+        setMessage("Passwords do not match!");
+      } else {
+        dispatch(register(name, email, password));
+        setMessage(null);
+      }
     }
   };
 
@@ -45,8 +54,8 @@ const RegisterPage = ({ location, history }) => {
       <HelmetTitle title="Register" />
       <FormContainer>
         <h1>Sign Up</h1>
-        {message && <Message varaint="danger">{message}</Message>}
-        {error && <Message varaint="danger">{error}</Message>}
+        {message && <Message variant="danger">{message}</Message>}
+        {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
 
         <hr />
@@ -54,6 +63,7 @@ const RegisterPage = ({ location, history }) => {
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              required
               type="text"
               placeholder="Enter name"
               value={name}
@@ -65,6 +75,7 @@ const RegisterPage = ({ location, history }) => {
           <Form.Group controlId="email">
             <Form.Label>Email Address</Form.Label>
             <Form.Control
+              required
               type="email"
               placeholder="Enter email"
               value={email}
@@ -76,6 +87,7 @@ const RegisterPage = ({ location, history }) => {
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              required
               type="password"
               placeholder="Enter password"
               value={password}
@@ -87,6 +99,7 @@ const RegisterPage = ({ location, history }) => {
           <Form.Group controlId="confirmPassword">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
+              required
               type="password"
               placeholder="Confirm password"
               value={confirmPassword}
