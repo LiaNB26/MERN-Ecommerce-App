@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import HelmetTitle from "../components/HelmetTitle";
 import { listOrders } from "../redux/actions/orderActions";
 
 const OrderListPage = ({ history }) => {
@@ -26,6 +27,7 @@ const OrderListPage = ({ history }) => {
 
   return (
     <>
+      <HelmetTitle title="Order List" />
       <h1>Orders</h1>
       {loading ? (
         <Loader />

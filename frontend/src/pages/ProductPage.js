@@ -14,6 +14,7 @@ import {
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import HelmetTitle from "../components/HelmetTitle";
 import {
   getProductDetails,
   createProductReview,
@@ -72,6 +73,7 @@ const ProductPage = (props) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <HelmetTitle title={product.name} />
           <Row>
             <Col md={10} lg={6}>
               <Image src={product.image} alt={product.image} fluid />

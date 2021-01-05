@@ -5,34 +5,58 @@ import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import Paginate from "../components/Paginate";
+import ProductCarousel from "../components/ProductCarousel";
+import HelmetTitle from "../components/HelmetTitle";
 import { getListOfProducts } from "../redux/actions/productActions";
+import { Link } from "react-router-dom";
 
 const HomePage = ({ match }) => {
   const keyword = match.params.keyword;
+  const pageNumber = match.params.pageNumber || 1;
 
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  const { products, loading, error } = productList;
+  const { products, loading, error, pages, page } = productList;
 
   useEffect(() => {
-    dispatch(getListOfProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(getListOfProducts(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   return (
     <>
-      <h2>Latest Products</h2>
+      <HelmetTitle title="Home" />
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light">
+          Go Back
+        </Link>
+      )}
+      <br />
+
+      <h1>Latest Products</h1>
+      <hr />
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Row>
-          {products.map((product) => (
-            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
+        <>
+          <Row>
+            {products.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ""}
+          />
+        </>
       )}
     </>
   );

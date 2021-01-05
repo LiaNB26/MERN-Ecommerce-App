@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/Message";
+import HelmetTitle from "../components/HelmetTitle";
 import { createOrder } from "../redux/actions/orderActions";
 import { addDecimals } from "../utils/functions";
 
@@ -53,6 +54,7 @@ const PlaceOrderPage = ({ history }) => {
 
   return (
     <>
+      <HelmetTitle title="Place Order" />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>

@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { USER_UPDATE_PROFILE_RESET } from "../redux/types/userTypes";
+import HelmetTitle from "../components/HelmetTitle";
 import {
   getUserDetails,
   updateUserProfile,
 } from "../redux/actions/userActions";
 import { getMyOrdersList } from "../redux/actions/orderActions";
+import { USER_UPDATE_PROFILE_RESET } from "../redux/types/userTypes";
 
 const ProfilePage = ({ history }) => {
   const [name, setName] = useState("");
@@ -60,129 +61,135 @@ const ProfilePage = ({ history }) => {
   };
 
   return (
-    <Row>
-      <Col lg={3}>
-        <h2>User Profile</h2>
-        <hr style={{ marginTop: 0, marginBottom: "0.2rem" }} />
+    <>
+      <HelmetTitle title="Profile" />
+      <Row>
+        <Col lg={3}>
+          <h2>User Profile</h2>
+          <hr style={{ marginTop: 0, marginBottom: "0.2rem" }} />
 
-        {message && <Message varaint="danger">{message}</Message>}
-        {error && <Message varaint="danger">{error}</Message>}
-        {success && <Message varaint="success">Profile Updated!</Message>}
-        {loading && <Loader />}
+          {message && <Message varaint="danger">{message}</Message>}
+          {error && <Message varaint="danger">{error}</Message>}
+          {success && <Message varaint="success">Profile Updated!</Message>}
+          {loading && <Loader />}
 
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId="email">
-            <Form.Label>Email Address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Confirm password"
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-              }}
-            ></Form.Control>
-          </Form.Group>
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="confirmPassword">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                }}
+              ></Form.Control>
+            </Form.Group>
 
-          <Button type="submit" varaint="primary">
-            Update
-          </Button>
-        </Form>
-      </Col>
+            <Button type="submit" varaint="primary">
+              Update
+            </Button>
+          </Form>
+        </Col>
 
-      <Col lg={1}>
-        <br />
-      </Col>
+        <Col lg={1}>
+          <br />
+        </Col>
 
-      <Col lg={8}>
-        <h2>My Orders</h2>
-        {loadingOrders ? (
-          <Loader />
-        ) : errorOrders ? (
-          <Message variant="danger">{errorOrders}</Message>
-        ) : (
-          <Table striped borderd hover responsive className="table-sm">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <i className="fas fa-times" style={{ color: "red" }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <i
-                        className="fas fa-times"
-                        style={{
-                          color: "red",
-                        }}
-                      ></i>
-                    )}
-                  </td>
-                  <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className="btn-sm" variant="light">
-                        Details
-                      </Button>
-                    </LinkContainer>
-                  </td>
+        <Col lg={8}>
+          <h2>My Orders</h2>
+          {loadingOrders ? (
+            <Loader />
+          ) : errorOrders ? (
+            <Message variant="danger">{errorOrders}</Message>
+          ) : (
+            <Table striped borderd hover responsive className="table-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>DATE</th>
+                  <th>TOTAL</th>
+                  <th>PAID</th>
+                  <th>DELIVERED</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </Col>
-    </Row>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>{order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-times"
+                          style={{ color: "red" }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-times"
+                          style={{
+                            color: "red",
+                          }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      <LinkContainer to={`/order/${order._id}`}>
+                        <Button className="btn-sm" variant="light">
+                          Details
+                        </Button>
+                      </LinkContainer>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </Col>
+      </Row>
+    </>
   );
 };
 

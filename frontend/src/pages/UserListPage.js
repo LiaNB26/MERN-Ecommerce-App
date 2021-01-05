@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listUsers, deleteUser } from "../redux/actions/userActions";
+import HelmetTitle from "../components/HelmetTitle";
 import ConfirmModal from "../components/ConfirmModal";
+import { listUsers, deleteUser } from "../redux/actions/userActions";
 
 const UserListPage = ({ history }) => {
   const [showModal, setShowModal] = useState(false);
@@ -47,6 +48,7 @@ const UserListPage = ({ history }) => {
 
   return (
     <>
+      <HelmetTitle title="User List" />
       <ConfirmModal
         showModal={showModal}
         title={"Are you sure?"}

@@ -7,6 +7,7 @@ import axios from "axios";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
+import HelmetTitle from "../components/HelmetTitle";
 import {
   getProductDetails,
   updateProduct,
@@ -98,6 +99,7 @@ const ProductEditPage = ({ match, history }) => {
 
   return (
     <>
+      <HelmetTitle title="Edit Product" />
       <Link to="/admin/productlist" className="btn btn-light my-3">
         Go Back
       </Link>

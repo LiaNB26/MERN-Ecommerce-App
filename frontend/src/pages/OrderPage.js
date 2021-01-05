@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import HelmetTitle from "../components/HelmetTitle";
 import {
   getOrderDetails,
   payOrder,
@@ -72,7 +73,7 @@ const OrderPage = ({ match, history }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, order, orderId, successPay, successDeliver]);
+  }, [dispatch, order, orderId, successPay, successDeliver, history, userInfo]);
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult));
@@ -88,6 +89,7 @@ const OrderPage = ({ match, history }) => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
+      <HelmetTitle title="Order Details" />
       <h1>Order No. {order._id}</h1>
       <Row>
         <Col md={8}>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
+import HelmetTitle from "../components/HelmetTitle";
 import { getUserDetails, updateUser } from "../redux/actions/userActions";
 import { USER_UPDATE_RESET } from "../redux/types/userTypes";
 
@@ -50,6 +51,7 @@ const UserEditPage = ({ match, history }) => {
 
   return (
     <>
+      <HelmetTitle title="Edit User" />
       <Link to="/admin/userlist" className="btn btn-light my-3">
         Go Back
       </Link>
