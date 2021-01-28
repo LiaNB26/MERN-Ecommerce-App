@@ -136,7 +136,7 @@ const ProfilePage = ({ history }) => {
           ) : errorOrders ? (
             <Message variant="danger">{errorOrders}</Message>
           ) : (
-            <Table striped borderd hover responsive className="table-sm">
+            <Table striped bordered hover responsive className="table-sm">
               <thead>
                 <tr>
                   <th>ID</th>
